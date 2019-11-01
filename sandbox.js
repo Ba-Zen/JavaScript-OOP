@@ -20,9 +20,22 @@ class User {
   }
 }
 
+class Admin extends User {
+  deleteUser(user) {
+    users = users.filter(u => u.username !== user.username);
+  }
+}
+
 const userOne = new User('harry', 'harry@hogwarts.com');
 const userTwo = new User('ronald', 'ronald@hogwarts.com');
-console.log(userOne, userTwo);
+const userThree = new Admin('baz', 'bazen@hogwarts.com');
+
+let users = [userOne, userTwo, userThree];
+console.log(users);
+
+userThree.deleteUser(userTwo);
+
+console.log(users);
 userOne
   .login()
   .incScore()
